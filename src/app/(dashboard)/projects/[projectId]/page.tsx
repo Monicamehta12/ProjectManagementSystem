@@ -78,12 +78,6 @@ export default function ProjectDetails({
     const [selectedTask, setSelectedTask] = useState<Task | null>(null);
     const [isEditMode, setIsEditMode] = useState(false);
 
-    useEffect(() => {
-        getProjectById();
-        getTasks();
-    }, []);
-
-
     const getProjectById = async () => {
         try {
             const config = {
@@ -120,6 +114,11 @@ export default function ProjectDetails({
 
         }
     }
+
+    useEffect(() => {
+        getProjectById();
+        getTasks();
+    }, []);
 
     const handleAddTask = async (task: Task) => {
         try {

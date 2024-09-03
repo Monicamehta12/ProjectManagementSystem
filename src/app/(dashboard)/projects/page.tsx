@@ -30,13 +30,6 @@ export default function ProjectPage() {
     console.log("userCategory", userCategory);
     const router = useRouter();
 
-    useEffect(() => {
-        getProjects();
-        getUsers();
-    }, []);
-
-    const options = ["Complete", "Not Complete", "On Going", "On Hold"];
-
     const getProjects = async () => {
         try {
             const config = {
@@ -72,6 +65,13 @@ export default function ProjectPage() {
             errorToaster("Error fetching users");
         }
     };
+
+    useEffect(() => {
+        getProjects();
+        getUsers();
+    }, []);
+
+    const options = ["Complete", "Not Complete", "On Going", "On Hold"];
 
     const getManagerName = (managerId: string) => {
         const manager = users.find(user => user.userId === managerId);

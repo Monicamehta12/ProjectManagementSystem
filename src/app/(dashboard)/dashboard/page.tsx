@@ -20,6 +20,42 @@ export default function DashboardPage() {
 
     const token = localStorage.getItem("token");
 
+    const fetchData = async () => {
+        try {
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-auth-token': token,
+                },
+            };
+
+            const response = await axios.get('/api/projects', config);
+
+            if (response) {
+                const data = response.data.projects;
+                console.log("__data", data);
+                const counts = {
+                    ongoing: data.filter((project: any) => project.status === "On Going").length,
+                    complete: data.filter((project: any) => project.status === "Complete").length,
+                    notComplete: data.filter((project: any) => project.status === "Not Complete").length,
+                    onHold: data.filter((project: any) => project.status === "On Hold").length,
+                };
+                setProjectCounts(counts);
+                setRecentProjects(data.slice(0, 5)); // Assuming the latest 5 projects are recent
+                setUserActivity(data.slice(0, 5).map((project: any) => ({ // Mock user activity
+                    user: project.developerName,
+                    action: "updated",
+                    project: project.projectName,
+                    date: project.date,
+                })));
+            }
+        } catch (error) {
+            console.error("Error fetching project data:", error);
+            errorToaster("Error fetching project data");
+        }
+    };
+
+
     useEffect(() => {
         if (!token) {
             errorToaster("User Not LoggedIn..!!");
@@ -28,7 +64,7 @@ export default function DashboardPage() {
         }
 
         fetchData();
-    }, []);
+    }, [token]);
 
     useEffect(() => {
         const ctx = document.getElementById("projectStatusChart") as HTMLCanvasElement;
@@ -68,42 +104,6 @@ export default function DashboardPage() {
             },
         });
     }, [projectCounts]);
-
-
-    const fetchData = async () => {
-        try {
-            const config = {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'x-auth-token': token,
-                },
-            };
-
-            const response = await axios.get('/api/projects', config);
-
-            if (response) {
-                const data = response.data.projects;
-                console.log("__data", data);
-                const counts = {
-                    ongoing: data.filter((project: any) => project.status === "On Going").length,
-                    complete: data.filter((project: any) => project.status === "Complete").length,
-                    notComplete: data.filter((project: any) => project.status === "Not Complete").length,
-                    onHold: data.filter((project: any) => project.status === "On Hold").length,
-                };
-                setProjectCounts(counts);
-                setRecentProjects(data.slice(0, 5)); // Assuming the latest 5 projects are recent
-                setUserActivity(data.slice(0, 5).map((project: any) => ({ // Mock user activity
-                    user: project.developerName,
-                    action: "updated",
-                    project: project.projectName,
-                    date: project.date,
-                })));
-            }
-        } catch (error) {
-            console.error("Error fetching project data:", error);
-            errorToaster("Error fetching project data");
-        }
-    };
 
     return (
         <div className="h-full p-5">
