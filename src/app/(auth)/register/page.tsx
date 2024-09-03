@@ -1,5 +1,5 @@
 "use client";
-
+import Image from "next/image";
 import { useState, useContext } from 'react';
 import { FaFacebookF, FaLinkedinIn, FaGoogle, FaRegEnvelope, FaEnvelope } from "react-icons/fa";
 import { MdLockOutline } from "react-icons/md"
@@ -70,7 +70,7 @@ export default function RegisterPage() {
             <div className="bg-white rounded-2xl shadow-2xl w-3/5 ">
                 <div className="p-5">
                     <div className="flex items-center text-left font-bold">
-                        <img src="images/logo.png" alt="Web Wizards Logo" className="h-8" />
+                        <Image src="/images/logo.png" alt="Web Wizards Logo"  width={32} height={32} />
                         <span className="ml-2 text-sky-500">Web Wizards</span>
                     </div>
                     <div className="py-3 text-center">
@@ -148,6 +148,6 @@ export default function RegisterPage() {
                     </form>
                 </div>
             </div>
-        // </main>
+        //  {/* </main> */}
     )
 }

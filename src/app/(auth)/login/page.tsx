@@ -109,7 +109,8 @@ export default function Login() {
                 {/* Sign In */}
                 <div className="w-3/5 p-5">
                     <div className="flex items-center text-left font-bold">
-                        <img src="images/logo.png" alt="Web Wizards Logo" className="h-8" />
+                        <Image src="/images/logo.png" alt="Web Wizards Logo"  width={32} height={32} />
+                        {/* <img src="images/logo.png" alt="Web Wizards Logo" className="h-8" /> */}
                         <span className="ml-2 text-sky-500">Web Wizards</span>
                     </div>
                     <div className="py-10 text-center">
@@ -181,6 +182,6 @@ export default function Login() {
            inline-block font-semibold hover:bg-white hover:text-sky-500">Sign Up</Link>
                 </div>
             </div>
-        // </main>
+         </main>
     );
 }
