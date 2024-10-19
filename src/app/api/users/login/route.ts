@@ -37,14 +37,15 @@ export async function POST(request: NextRequest) {
       expiresIn: 36000,
     });
     console.log("user",user)
-    const response = NextResponse.json({
+    return NextResponse.json({
       message: 'Login successful',
       success: true,
       user: user,
       token: token,
     });
 
-    return response;
+    // return NextResponse.json(response);
+    // return response;
   } catch (error: any) {
     return Response.json({ error: error.message }, { status: 500 });
   }
@@ -57,7 +58,7 @@ export async function GET(email: string) {
     if (!user) {
       return Response.json({ error: 'User does not exist' }, { status: 400 });
     }
-
+    // return NextResponse.json(user);
     return user;
   } catch (error: any) {
     return Response.json({ error: error.message }, { status: 500 });

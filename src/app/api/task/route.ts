@@ -15,8 +15,8 @@ export async function POST(request: NextRequest) {
             success: true,
             task: task,
         });
-
-        return response;
+        return NextResponse.json(response);
+        // return response;
     } catch (error: any) {
         return NextResponse.json({ error: error.message }, { status: 500 });
     }
@@ -71,7 +71,8 @@ export async function DELETE(request: NextRequest) {
                 success: true,
                 message: "Task deleted Successfully"
             });
-            return response;
+            return NextResponse.json(response);
+            // return response;
         }
     } catch (error: any) {
         return Response.json({ error: error.message }, { status: 500 });

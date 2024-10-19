@@ -165,7 +165,8 @@ export async function POST(request: NextRequest) {
       project: project,
     });
 
-    return response;
+    return NextResponse.json(response);
+    // return response;
   } catch (error: any) {
     console.log(error);
     return NextResponse.json({ error: error.message }, { status: 500 });
@@ -213,6 +214,7 @@ export async function DELETE(request: NextRequest) {
       success: true,
       message: "Project deleted Successfully"
     });
-    return response;
+    return NextResponse.json(response);
+    // return response;
   // }
 }

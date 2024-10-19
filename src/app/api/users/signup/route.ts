@@ -36,7 +36,8 @@ export async function POST(request: NextRequest) {
                 user: newUser,
             });
 
-            return response;
+            return NextResponse.json(response);
+            // return response;
         }
     } catch (error: any) {
         console.log(error)

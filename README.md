@@ -20,9 +20,8 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-Our project is Project Management System. The main users are - Mentors/Managers and Employees
+The project is Project Management System. The main users are - Mentors/Managers and Employees
 
-Author: Tirth Shah
 User Authentication: Manager and Employees can register with role as "manager" and "employee" inorder to provide role based access for different pages. Like in our project the manager can create, view and delete his/her project whereas the employee can only view the project assigned to him/her.
 
 Registration: 
@@ -31,12 +30,10 @@ Registration:
 Login:
 ![alt text](image-1.png)
 
-Author: Harman Sikand
 Dashboard: Get the project using the status so the counts of projects by status and its chart representation using Chart.js library.
 
 ![alt text](image.png)
 
-Author: Jay Shah
 Add Project page: Using form to submit the project details in order to add it to database
 ![alt text](image-1.png)
 
@@ -45,7 +42,6 @@ Projects page: List all the user's projects thorugh cards with all the project d
 
 Filter by status feature: Porject can be filtered by status: On going, On hold, Complete, Incomplete
 
-Author: Monica Mehta
 Project Detail page:
 This page shows the project detailed page with a table that displays the task of employees.
 ![alt text](image-3.png)
